@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="style.css"></head>
+<head>
+<link rel="stylesheet" href="style.css">
+<meta charset="utf-8"/>
+</head>
 <script type="text/javascript">
 function startTime()
 {
