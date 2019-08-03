@@ -1,0 +1,8 @@
+
+*.user
+*.csv
+*.jpg
+*.txt
+Makefile
+*.cmake
+*.cbp
