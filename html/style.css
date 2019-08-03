@@ -1,0 +1,19 @@
+*
+{
+	background-color:#000000;
+}
+.time
+{
+	color:#FFFFFF;
+	text-align:center;
+	font-size: 150px;
+}
+.mqtt
+{
+	color:#FFFFFF;
+	margin-top: 30vh;
+	text-align:center;
+	transform: translateY(-50%);
+	font-size: 70px;
+	font-family: sans-serif;
+}
