@@ -29,7 +29,7 @@ function checkTime(i)
 <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
-var socket = io.connect('192.168.1.11:1883');
+var socket = io.connect('127.0.0.1:1883');
   socket.on('connect', function () {
     console.log("connected");
     socket.on('mqtt', function (msg) {
