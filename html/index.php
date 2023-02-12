@@ -26,19 +26,38 @@ function checkTime(i)
 	return i;
 }
 </script>
-<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-var socket = io.connect('127.0.0.1:1883');
-  socket.on('connect', function () {
-    console.log("connected");
-    socket.on('mqtt', function (msg) {
-      if (msg.topic == "hello_topic") {
-	  document.getElementById('messages').innerHTML=msg.payload;
-	}   
-    });
-    socket.emit('subscribe',{topic:'hello_topic'});
-  });
+// Create a client instance
+client = new Paho.MQTT.Client('127.0.0.1', 1883, "RPI");
+
+// set callback handlers
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+
+// connect the client
+client.connect({onSuccess:onConnect});
+
+
+// called when the client connects
+function onConnect() {
+  // Once a connection has been made, make a subscription and send a message.
+  console.log("onConnect");
+  client.subscribe("hello_topic");
+}
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.log("onConnectionLost:"+responseObject.errorMessage);
+  }
+}
+
+// called when a message arrives
+function onMessageArrived(message) {
+  console.log("onMessageArrived:"+message.payloadString);
+  document.getElementById('messages').message.payloadString;
+}
 </script>
 <body onload="startTime()">
 <div class="time" id="txt"></div>
