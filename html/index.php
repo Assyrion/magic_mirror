@@ -26,10 +26,10 @@ function checkTime(i)
 	return i;
 }
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 // Create a client instance
-client = new Paho.MQTT.Client('127.0.0.1', 1883, "RPI");
+var client = new Paho.Client("localhost", 8080,  "RPI");
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
@@ -56,7 +56,7 @@ function onConnectionLost(responseObject) {
 // called when a message arrives
 function onMessageArrived(message) {
   console.log("onMessageArrived:"+message.payloadString);
-  document.getElementById('messages').message.payloadString;
+  document.getElementById("messages").innerHTML = message.payloadString;
 }
 </script>
 <body onload="startTime()">
